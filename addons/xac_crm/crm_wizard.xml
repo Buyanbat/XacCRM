@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<wizard
+			id="wizard_partner_register"
+            menu="False"
+            model="xac.partner"
+            name="wizard.partner.register"
+            string="Харилцагч бүртгэх"
+         />
+         
+         <wizard
+            id="wizard_partner_loan"
+            model="xac.partner"
+            name="wizard.partner.loan"
+            string="Зээлийн бүтээгдэхүүн тодорхойлох"
+          />
+          <wizard
+            id="wizard_loan_order"
+            model="xac.partner"
+            name="wizard.loan.order"
+            string="Зээлийн өргөдөл бүртгэх"
+          />
+	</data>
+</openerp>

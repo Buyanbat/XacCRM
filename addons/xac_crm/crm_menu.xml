@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+        <menuitem id="menu_xac_partner_root" name="Харицлагчид" icon="terp-crm" />
+        
+        <menuitem id="menu_partner_person" 
+        	name="Иргэн" 
+        	icon="terp-partner" 
+        	action="view_xac_partner_person_act"  
+        	parent="menu_xac_partner_root"/>
+        	
+        <menuitem id="menu_wizard_register_partner" 
+        	name="Харилцагч бүртгэх"
+        	type="wizard" 
+        	action="wizard_partner_register"  
+        	parent="menu_xac_partner_root" 
+        	icon="STOCK_NEW"
+        />
+        
+        <menuitem id="menu_xac_loan"
+        	name="Зээл"
+        	action="view_xac_loan_act"
+        	parent="base.menu_administration"
+        />
+        <menuitem id="menu_loan_direction"
+        	name="Зээлийн зориулалт"
+        	action="view_loan_direction_act"
+        	parent="base.menu_administration"
+        />
+         <menuitem id="menu_loan_draft"
+        	name="Зээлийн бүтээгэдхүүн тодорхойлох"
+        	action="view_loan_draft_act"
+        	parent="menu_xac_partner_root"
+        />
+        <menuitem id="menu_xac_branch"
+        	name="Салбарууд"
+        	action="view_xac_branch_act"
+        	parent="base.menu_administration"
+        />
+        <menuitem id="menu_loan_requirements"
+        	name="Бичиг баримтын бүрдүүлбэр"
+        	action="view_loan_requirements_act"
+        	parent="base.menu_administration"
+        />
+	</data>
+</openerp>

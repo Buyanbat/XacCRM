@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_xac_loan_tree" model="ir.ui.view">
+			<field name="name">view.xac.loan.tree</field>
+			<field name="model">xac.loan</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Хас Банкны олгох зээлүүд">
+					<field name="name" select="1"/>
+					<field name="type" select="1"/>
+					<field name="amount_min" select="1" />
+					<field name="amount_max" select="1"/>
+					<field name="date_min" select="1"/>
+					<field name="date_max"  select="1"/>
+					<field name="rate_min" select="1" />
+					<field name="rate_max" select="1" />
+					<field name="active" select="1" />
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_xac_loan_form" model="ir.ui.view">
+			<field name="name">view.xac.loan.form</field>
+			<field name="model">xac.loan</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Хас Банкны олгох зээлүүд" >
+					<group colspan="4" col="6">
+						<field name="name" />
+						<field name="type" />
+						<field name="active" />
+					</group>
+					<group colspan="4" col="6">
+						<field name="amount_min"  />
+						<field name="date_min" />
+						<field name="rate_min"  />
+						<field name="amount_max" />
+						<field name="date_max"  />
+						<field name="rate_max"  />
+					</group>
+					<notebook colspan="4">
+						<page string="Дэлгэрэнгүй">
+							<separator string="Дэлгэрэнгүй тайлбар" />
+							<field name="note" nolabel="1" colspan="4" />
+						</page>
+						<page string="Бүрдүүлбэрүүд">
+							<field name="requirements" nolabel="1" colspan="4"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="view_xac_loan_act" model="ir.actions.act_window">
+			<field name="name">Хас Банкны олгох зээлүүд</field>
+			<field name="res_model">xac.loan</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record id="view_loan_direction_tree" model="ir.ui.view">
+			<field name="name">view.loan.direction.tree</field>
+			<field name="model">loan.direction</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Зээлийн зориулалт" editable="top">
+					<field name="name" select="1"/>
+					<field name="type" select="1"/>
+					<field name="active" select="1" />
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_loan_direction_form" model="ir.ui.view">
+			<field name="name">view.loan.direction.form</field>
+			<field name="model">loan.direction</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Зээлийн зориулалт">
+					<group colspan="4" col="6">
+						<field name="name" />
+						<field name="type" />
+						<field name="active" />
+					</group>
+					<separator string="Дэлгэрэнгүй тайлбар" />
+					<field name="note" nolabel="1" colspan="4" />
+				</form>
+			</field>
+		</record>
+		<record id="view_loan_direction_act" model="ir.actions.act_window">
+			<field name="name">Зээлийн зориулалтууд</field>
+			<field name="res_model">loan.direction</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record id="view_loan_requirements_tree" model="ir.ui.view">
+			<field name="name">view.loan.requirements.tree</field>
+			<field name="model">loan.requirements</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Бичиг баримтын бүрдүүлбэр">
+					<field name="name" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_loan_requirements_form" model="ir.ui.view">
+			<field name="name">view.loan.requirements.form</field>
+			<field name="model">loan.requirements</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Бичиг баримтын бүрдүүлбэр">
+					<field name="name" colspan="4"/>
+					<notebook>
+						<page string="Дэлгэрэнгүй">
+							<separator string="Дэлгэрэнгүй тайлбар" colspan="4" />
+							<field name="note" nolabel="1" colspan="4" />
+						</page>
+						<page string="Шаардагдах зээлүүп">
+							<field name="loans" nolabel="1" colspan="4" />
+						</page>
+					</notebook>
+					
+				</form>
+			</field>
+		</record>
+		<record id="view_loan_requirements_act" model="ir.actions.act_window">
+			<field name="name">Бичиг баримтыг бүрдүүлбэр</field>
+			<field name="res_model">loan.requirements</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		
+		<record id="view_loan_draft_tree" model="ir.ui.view">
+			<field name="name">view.loan.draft.tree</field>
+			<field name="model">loan.draft</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Зээл Бүтээгдэхүүн тодорхойлох">
+					<field name="loan_type"  />
+					<field name="partner_id" select="1" />
+					<field name="amount" select="1" />
+					<field name="time" select="1" />
+					<field name="velocity" select="1" />
+					<field name="currency" select="1" />
+					<field name="manager_id" select="1" />
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_loan_draft_form" model="ir.ui.view">
+			<field name="name">view.loan.draft.form</field>
+			<field name="model">loan.draft</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Зээлийн Бүтээгдэхүүн тодорхойлох">
+					<field name="partner_id" colspan="4" readonly="1" />
+					<notebook colspan="4">
+						<page string="Хэрэгцээ">
+							<separator string="Харилцагчийн зээлийн хэрэгцээ" colspan="4"/>
+							<group colspan="4" col="6">
+								<field name="for_own" />
+								<field name="amount" />
+								<field name="currency" />
+								
+								<field name="for_business" />
+								<field name="time" />
+								<newline />
+								
+								<field name="usage" />
+								<field name="velocity" />
+								<newline />
+								
+								<field name="other_usage" />
+								<field name="telephone" />
+								<newline/>
+							</group>
+							
+						</page>
+					  <page string="Тухайн зээлийн мэдээлэл">
+							<group colspan="4" col="6">
+								<field name="name_for_loan" />
+        						<field name="company_for_loan" />
+        						<newline />
+        						
+        						<field name="address_for_loan" />
+        						<field name="commend" />
+        						<field name="prepay_of_loan"/>
+        						
+        						<field name="school_of_student" />
+        						<field name="is_vitanna" />
+        						<field name="is_eko" />
+        						
+							</group>
+						</page> 
+						 <page string="Харилцагчийн орлогын мэдээлэл ">
+						 <group colspan="4" col="2">
+							<field name="personal_incomes" nolabel="1"  widget="one2many">
+								<tree string="Өөрийн орлого" editable="top">
+        							<field name="type"/>
+        							<field name="company"/>
+        							<field name="amount" />
+								</tree>
+								<form string="Өөрийн орлого">
+									<group colspan="4" col="6">
+										<field name="type" />
+										<field name="company" />
+										<field name="amount" />
+									</group>
+									<separator string="Тэмдэглэл" colspan="4" />
+									<field name="note" colspan="4" nolabel="1" />
+								</form>
+							</field>
+							<field name="other_incomes" nolabel="1" widget="one2many">
+								<tree string="Бусад орлого" editable="top">
+        							<field name="source"/>
+        							<field name="amount"/>
+        							<field name="velocity" />
+								</tree>
+								<form string="Бусад орлого">
+									<group colspan="4" col="6">
+										<field name="source" />
+										<field name="amount" />
+										<field name="velocity" />
+									</group>
+									<separator string="Тэмдэглэл" colspan="4" />
+									<field name="note" colspan="4" nolabel="1" />
+								</form>
+							</field>
+							</group>
+							<field name="family_cap" />
+							<field name="family_income" />
+							<field name="family_incomes" nolabel="1" colspan="4" widget="one2many">
+								<tree string="Гэр бүлийн орлого" editable="top">
+        							<field name="name"/>
+        							<field name="type"/>
+        							<field name="relation"/>
+        							<field name="amount" />
+								</tree>
+								<form string="Гэр бүлийн орлого">
+									<group colspan="4" col="4">
+										<field name="name" />
+										<field name="type" />
+										<field name="relation" />
+										<field name="amount" />
+									</group>
+									<separator string="Тэмдэглэл" colspan="4" />
+									<field name="note" colspan="4" nolabel="1" />
+								</form>
+							</field>
+						</page>
+						<page string="Барьцаа хөрөнгийн мэдээлэл">
+							<notebook colspan="4">
+								<page string="Хөдлөх хөрөнгө">
+								  <field name="moveable_sureties" nolabel="1" colspan="4" widget="one2many">
+									<tree string="Хөдлөх хөрөнгө" editable="top">
+	        							<field name="type"/>
+	        							<field name="ref"/>
+	        							<field name="owner"/>
+	        							<field name="made_date" />
+	        							<field name="location" />
+	        							<field name="amount" />
+									</tree>
+									<form string="Хөдлөх хөрөнгө">
+										<group colspan="4" col="6">
+											<field name="type" />
+											<field name="ref" />
+											<field name="owner" />
+											
+											<field name="made_date" />
+											<field name="location" />
+											<field name="amount" />
+										</group>
+										<separator string="Тэмдэглэл" colspan="4" />
+										<field name="note" colspan="4" nolabel="1" />
+									</form>
+								</field>
+							</page>
+							<page string="Үл хөдлөх хөрөнгө" >
+								<field name="unmoveable_sureties" nolabel="1" colspan="4" widget="one2many">
+									<tree string="Үл хөдлөх хөрөнгө" editable="top">
+	        							<field name="type"/>
+	        							<field name="ref"/>
+	        							<field name="owner"/>
+	        							<field name="made_date" />
+	        							<field name="location" />
+	        							<field name="amount" />
+									</tree>
+									<form string="Үл хөдлөх хөрөнгө">
+										<group colspan="4" col="6">
+											<field name="type" />
+											<field name="ref" />
+											<field name="owner" />
+											
+											<field name="made_date" />
+											<field name="location" />
+											<field name="amount" />
+										</group>
+										<separator string="Тэмдэглэл" colspan="4" />
+										<field name="note" colspan="4" nolabel="1" />
+									</form>
+								</field>
+							</page>
+							<page string="Гуравдагч этгээдийн хөрөнгө" >
+								<field name="thirdparty_sureties" nolabel="1" colspan="4" widget="one2many">
+									<tree string="Гуравдагч этгээдийн хөрөнгө" editable="top">
+	        							<field name="name"/>
+	        							<field name="relation"/>
+	        							<field name="job"/>
+	        							<field name="address" />
+	        							<field name="telephone" />
+									</tree>
+									<form string="Гуравдагч этгээдийн хөрөнгө">
+										<group colspan="4" col="6">
+											<field name="name" />
+											<field name="relation" />
+											<newline/>
+											
+											<field name="job" />
+											<field name="address" />
+											<field name="telephone" />
+											
+										</group>
+										<separator string="Тэмдэглэл" colspan="4" />
+										<field name="note" colspan="4" nolabel="1" />
+									</form>
+								</field>
+								</page>
+							</notebook> 
+						</page>
+						<page string="Санал болгох зээлийн мэдээлэл">
+							<field name="loans" nolabel="1" colspan="4" />
+						</page> 
+					</notebook>
+					<group colspan="4" col="4">
+						<field name="manager_id" />
+						<button name="print_applications" string="Бүрдүүлэх материалын жагсаалт хэвлэх" icon="gtk-print"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<record id="view_loan_draft_act" model="ir.actions.act_window">
+			    <field name="name">Зээлийн бүтээгдэхүүн тодорхойлох</field>
+	            <field name="res_model">loan.draft</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="view_mode">tree,form</field>
+		</record>
+		
+		<record id="view_loan_order_tree" model="ir.ui.view">
+			<field name="name">view.loan.order.tree</field>
+			<field name="model">loan.order</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Зээлийн өргөдөл бүртгэх">
+					<field name="partner_id" select="1"/>
+					<field name="loan_id" select="1" />
+					<field name="date" select="1"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_loan_order_form" model="ir.ui.view">
+			<field name="name">view.loan.order.form</field>
+			<field name="model">loan.order</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Зээлийн өргөдөл бүртгэх">
+					<field name="partner_id" colspan="4" />
+					<field name="loan_id"  />
+					<field name="date" />
+					<field name="services" nolabel="1" colspan="2" widget="one2many">
+						<tree string="Санал болгох бусад бүтээгдэхүүн,үйлчилгээ" editable="top">
+							<field name="service_id" />
+						</tree>
+						<form string="Санал болгох бусад бүтээгдэхүүн,үйлчилгээ">
+							<field name="service_id" />
+						</form>
+					</field>
+					<field name="requirements" nolabel="1" colspan="2" widget="one2many">
+						<tree string="Зээлийн өргөдөл, бичиг баримтын бүрдүүлбэр" editable="top">
+							<field name="done" />
+							<field name="requirement_id" />
+							<field name="date" />						
+						</tree>
+						<form string="Зээлийн өргөдөл, бичиг баримтын бүрдүүлбэр">
+							<field name="done" />
+							<field name="requirement_id" />
+							<field name="date" />						
+						</form>
+					</field>
+					<separator string="Бусад тэмдэглэл" colspan="4"/>
+					<field name="note" nolabel="1" colspan="4"/>
+				</form>
+			</field>
+		</record>
+		
+		
+	</data>
+</openerp>

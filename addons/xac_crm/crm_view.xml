@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_xac_partner_person_tree" model="ir.ui.view">
+			<field name="name">view.xac.partner.person.tree</field>
+			<field name="model">xac.partner</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Харилцагчдийн бүртгэл(Иргэн)">
+					<field name="ref" select="1"/>
+					<field name="parent_name" select="1" />
+					<field name="name" select="1"/>
+					<field name="register_id" select="1"/>
+					<field name="civil_id"  select="1"/>
+					<field name="gender" />
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_xac_partner_person_form" model="ir.ui.view">
+			<field name="name">view.xac.partner.person.form</field>
+			<field name="model">xac.partner</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Харилцагчийн бүртгэл(Иргэн)">
+					<group colspan="4" col="4">
+						<field name="ref" readonly="1" colspan="4" />
+						<field name="register_id" required="1" on_change="onchange_register_id(register_id)"/>
+						<field name="civil_id" required="1"/>
+						<field name="parent_name" required="1" />
+						<field name="name" required="1"/>
+						<field name="gender" required="1"/>
+						<field name="bdate" />
+					</group>
+					<group colspan="4" col="2">
+						<field name="addresses" widget="one2many" nolabel="1">
+							<tree string="Харицлагчийн хаяг" editable="top">
+								<field name="name" />
+								<field name="city" />
+								<field name="district" />
+								<field name="street" />
+								<field name="number" />
+							</tree>
+							<form string="Харилцагчийн хаяг">
+								<group colspan="4" col="6">	
+									<field name="name" />
+									<field name="city" />
+									<field name="district" />
+									
+									<field name="street" />
+									<field name="number" />
+								</group>
+								<separator string="Тайлбар" colspan="4"/>
+								<field name="note" colspan="4" nolabel="1" />
+							</form>
+						</field>
+						<field name="phones" widget="one2many" nolabel="1">
+							<tree string="Харилцагчийн утас" editable="top">
+								<field name="name" />
+								<field name="number" />
+							</tree>
+							<form string="Харилцагчийн утас">
+								<field name="name" />
+								<field name="number" />
+								<separator string="Дэлгэрэнгүй" colspan="4"/>
+								<field name="note"  colspan="4" nolabel="1"/>
+							</form>
+						</field>
+						
+						<field name="services" widget="one2many" nolabel="1" >
+							<tree string="Хас Банкнаас авах үйлчилгээ" editable="top">
+								<field name="service_id" />
+								<field name="branch_id" readonly="1" />
+								<field name="date" />
+							</tree>
+							<form string="Хас Банкнаас авах үйлчилгээ">
+								<group colspan="4" col="6" >
+									<field name="service_id" required="1" />
+									<field name="date" />
+									<field name="branch_id" readonly="1" />
+								</group>
+								<separator string="Тэмдэглэл" colspan="4" />
+								<field name="note" colspan="4" nolabel="1" />
+							</form>
+						</field>
+						
+						<field name="reasons" widget="one2many" nolabel="1">
+							<tree string="Хас банкинд хандсан шалтгаан" editable="top">
+								<field name="reason_id" />
+								<field name="branch_id" readonly="1" />
+								<field name="date" />
+							</tree>
+							<form string="Хас банкинд хандсан шалтгаан">
+								<group colspan="4" col="6" >
+									<field name="reason_id" required="1" />
+									<field name="date" />
+									<field name="branch_id" readonly="1" />
+								</group>
+								<separator string="Тэмдэглэл" colspan="4"/>
+								<field name="note" colspan="4" nolabel="1"/>
+							</form>
+						</field>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<record id="view_xac_partner_person_act" model="ir.actions.act_window">
+			    <field name="name">Харилцагчийн бүртгэл(Иргэн)</field>
+	            <field name="res_model">xac.partner</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="domain">[('state','=','person')]</field>
+	            <field name="view_mode">tree,form</field>
+	            <field name="views" eval="[('tree',ref('view_xac_partner_person_tree')),('form',ref('view_xac_partner_person_form'))]"/>
+		</record>
+		
+		<record id="view_xac_branch_tree" model="ir.ui.view">
+			<field name="name">view.xac.branch.tree</field>
+			<field name="model">xac.branch</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Хас Банкны салбарууд">
+					<field name="fullname" select="1"/>
+					<field name="name" select="1" />
+					<field name="director" select="1" />
+				</tree>
+			</field>
+		</record>
+		<record id="view_xac_branch_form" model="ir.ui.view">
+			<field name="name">view.xac.branch.form</field>
+			<field name="model">xac.branch</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Хас Банкны салбарууд">
+					<field name="fullname" />
+					<field name="name" />
+					<field name="parent" />
+					<field name="director" />
+					<notebook colspan="4">
+						<page string="Дэлгэрэнгүй">
+							<separator string="Дэлгэрэнгүй" colspan="4" />
+							<field name="note" colspan="4" nolabel="1"/>
+						</page>
+						<page string="Дэд салбарууд">
+							<field name="childs" nolabel="1" colspan="4"/>
+						</page>
+						<page string="Ажилчид">
+							<field name="users" nolabel="1" colspan="4"/>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record id="view_xac_branch_act" model="ir.actions.act_window">
+			    <field name="name">Хас Банкны салбарууд</field>
+	            <field name="res_model">xac.branch</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="view_mode">tree,form</field>
+		</record>
+		
+		
+	</data>
+</openerp>
